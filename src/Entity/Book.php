@@ -23,7 +23,7 @@ class Book
     #[Column]
     private int $id;
 
-    #[ManyToMany(targetEntity: Author::class, mappedBy: 'books')]
+    #[ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['PERSIST'])]
     private Collection $authors;
 
     #[Column]
@@ -62,7 +62,14 @@ class Book
         return $this;
     }
 
-    public function removedAuthor(Author $author): self
+    public function clearAuthors(): self
+    {
+        $this->authors->clear();
+
+        return $this;
+    }
+
+    public function removeAuthor(Author $author): self
     {
         $this->authors->removeElement($author);
 

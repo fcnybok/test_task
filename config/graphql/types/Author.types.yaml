@@ -1,0 +1,12 @@
+Author:
+  type: object
+  config:
+    fields:
+      id:
+        type: "Int!"
+      fullName:
+        type: "String!"
+      quantityBooks:
+        type: "Int!"
+      createdAt:
+        type: "DateTimeImmutable!"

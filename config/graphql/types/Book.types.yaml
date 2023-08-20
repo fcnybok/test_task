@@ -1,0 +1,14 @@
+Book:
+  type: object
+  config:
+    fields:
+      id:
+        type: "Int!"
+      name:
+        type: "String!"
+      description:
+        type: "String!"
+      publicAt:
+        type: "DateTimeImmutable!"
+      authors:
+        type: "[Author]"
