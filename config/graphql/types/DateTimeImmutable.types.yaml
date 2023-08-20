@@ -1,0 +1,6 @@
+DateTimeImmutable:
+  type: custom-scalar
+  config:
+    serialize: ["App\\GraphQL\\Types\\DateTimeImmutableType", "serialize"]
+    parseValue: ["App\\GraphQL\\Types\\DateTimeImmutableType", "parseValue"]
+    parseLiteral: ["App\\GraphQL\\Types\\DateTimeImmutableType", "parseLiteral"]

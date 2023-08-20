@@ -30,7 +30,7 @@ class Author
     #[Column]
     private int $quantityBooks;
 
-    #[ManyToMany(targetEntity: Book::class, inversedBy: 'authors')]
+    #[ManyToMany(targetEntity: Book::class, mappedBy: 'authors', cascade: ['PERSIST'])]
     private Collection $books;
 
     #[Column(type: Types::DATETIME_IMMUTABLE)]

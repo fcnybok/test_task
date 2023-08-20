@@ -1,0 +1,21 @@
+Query:
+  type: object
+  config:
+    description: "Apartments ORM repository"
+    fields:
+      book:
+        type: "Book"
+        args:
+          id: Int!
+        resolve: '@=resolver("App\\Resolver\\BookResolver::getBook", [args["id"]])'
+      books:
+        type: "[Book]"
+        resolve: '@=resolver("App\\Resolver\\BookResolver::getBooks")'
+      author:
+        type: "Author"
+        args:
+          id: Int!
+        resolve: '@=resolver("App\\Resolver\\AuthorResolver::getAuthor", [args["id"]])'
+      authors:
+        type: "[Author]"
+        resolve: '@=resolver("App\\Resolver\\AuthorResolver::getAuthors")'

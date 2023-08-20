@@ -1,0 +1,99 @@
+Mutation:
+  type: object
+  config:
+    description: "Apartments ORM repository"
+    fields:
+      createBook:
+        type: "Book"
+        args:
+          name:
+            type: String!
+            validation:
+              - NotBlank: ~
+              - Length:
+                  min: 3
+                  max: 255
+          description:
+            type: String!
+            validation:
+              - NotBlank: ~
+              - Length:
+                  min: 3
+                  max: 1000
+          publicAt:
+            type: DateTimeImmutable!
+            validation:
+              - NotBlank: ~
+          authors:
+            type: "[Int!]"
+            validation:
+              - NotBlank: ~
+        resolve: '@=resolver("App\\Resolver\\BookResolver::create", [args["name"], args["description"], args["publicAt"], args["authors"]])'
+      updateBook:
+        type: "Book"
+        args:
+          id:
+            type: Int!
+          name:
+            type: String!
+            validation:
+              - NotBlank: ~
+              - Length:
+                  min: 3
+                  max: 255
+          description:
+            type: String!
+            validation:
+              - NotBlank: ~
+              - Length:
+                  min: 3
+                  max: 1000
+          publicAt:
+            type: DateTimeImmutable!
+            validation:
+              - NotBlank: ~
+          authors:
+            type: "[Int!]"
+            validation:
+              - NotBlank: ~
+        resolve: '@=resolver("App\\Resolver\\BookResolver::update", [args["id"], args["name"], args["description"], args["publicAt"], args["authors"]])'
+
+      deleteBook:
+        type: "Book"
+        args:
+          id:
+            type: Int!
+        resolve: '@=resolver("App\\Resolver\\BookResolver::delete", [args["id"]])'
+
+      createAuthor:
+        type: "Author"
+        args:
+          fullName:
+            type: String!
+            validation:
+              - NotBlank: ~
+              - Length:
+                  min: 3
+                  max: 255
+        resolve: '@=resolver("App\\Resolver\\AuthorResolver::create", [args["fullName"]])'
+
+      updateAuthor:
+        type: "Author"
+        args:
+          id:
+            type: Int!
+          fullName:
+            type: String!
+            validation:
+              - NotBlank: ~
+              - Length:
+                  min: 3
+                  max: 255
+        resolve: '@=resolver("App\\Resolver\\AuthorResolver::update", [args["id"], args["fullName"]])'
+
+      deleteAuthor:
+        type: "Author"
+        args:
+          id:
+            type: Int!
+        resolve: '@=resolver("App\\Resolver\\AuthorResolver::delete", [args["id"]])'
